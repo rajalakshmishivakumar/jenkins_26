@@ -10,11 +10,11 @@ pipeline {
             }
 
             steps {
-                echo 'Running Build on Build Node'
+                echo 'Running Build on slave1 node'
 
                 sh 'echo Building application...'
-                sh 'mkdir -p build'
-                sh 'echo Build completed > build/result.txt'
+                sh 'pwd'
+                sh 'ls -lrt'
             }
         }
 
@@ -24,10 +24,10 @@ pipeline {
             }
 
             steps {
-                echo 'Running Tests on Test Node'
+                echo 'Running Tests on slave2 node'
 
                 sh 'echo Running tests...'
-                sh 'cat build/result.txt'
+                sh 'cat jenkinsfile'
             }
         }
 
