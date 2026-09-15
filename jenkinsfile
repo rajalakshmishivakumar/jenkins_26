@@ -1,22 +1,23 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('STAGE1'){
-            steps{
-                sh '''
-                ls -lrt
-                pwd
-                '''
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
             }
         }
-        stage('STAGE2'){
-            steps{
-                sh 'sleep 5'
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
             }
         }
-        stage('STAGE3')
-        steps{
-            echo "SUCCESSFULL EXECUTION"
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+            }
         }
     }
 }
