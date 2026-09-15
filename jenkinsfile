@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    stages{
+        stage('STAGE1'){
+            steps{
+                sh '''
+                ls -lrt
+                pwd
+                '''
+            }
+        }
+        stage('STAGE2'){
+            steps{
+                sh 'sleep 5'
+            }
+        }
+        stage('STAGE3')
+        steps{
+            echo "SUCCESSFULL EXECUTION"
+        }
+    }
+}
