@@ -12,7 +12,7 @@ pipeline{
                     try{
                         sh 'exit 1'
                     }
-                    catch(Except e){
+                    catch(Exception e){
                         echo " caught an exception : ${e.message} "
                         currentBuild.result = 'SUCCESS'
                     }
