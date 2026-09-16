@@ -1,0 +1,42 @@
+pipeline{
+    agent any 
+    parameters{
+        string (
+            name : 'USERNAME',
+            defaultValue : 'Rajalakshmi',
+            description : 'Enter your name : '
+        )
+
+        choice (
+            name : 'ENVIRONMENT',
+            choices : ['DEV', 'TEST', 'PROD'],
+            description : 'Select your choice'
+        )
+
+        booleanparam(
+            name : 'DEPLOY',
+            defaultValue : 'false'
+            description : 'Do you want to deploy'
+        )
+}
+    stages{
+        stage('DISPLAYING PARAMETERS'){
+            steps{
+                echo "Username = ${params.USERNAME}"
+                echo "Environment = ${params.ENVIRONMENT}"
+                echo "DEPLOY = ${params.DEPLOY}"
+            }
+        }
+        stage('DEPLOY'){
+            when{
+                expression{
+                    params.DEPLOY == true
+                }
+            }
+            steps{
+                echo " Deploying ${params.ENVIRONMENT}  ....."
+
+            }
+        }
+    }
+}
