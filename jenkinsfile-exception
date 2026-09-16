@@ -1,0 +1,32 @@
+pipeline{
+    agent any 
+    stages{
+        stage('BUILD'){
+            steps{
+                catchError(buildResult: 'Failure', stageResult: 'Failure')
+            }
+        }
+        stage('EXCEPTION_HADLING'){
+            steps{
+                script{
+                    try{
+                        sh 'exit 1'
+                    }
+                    catch(Except e){
+                        echo " caught an exception : ${e.message} "
+                        currentBuild.result = 'SUCCESS'
+                    }
+                    finally{
+                        echo "Cleaning up ..."
+
+                    }
+                }
+            }
+        }
+        stage('SAMPLE'){
+            steps{
+                sh ' ls -lrt'
+            }
+        }
+    }
+}
