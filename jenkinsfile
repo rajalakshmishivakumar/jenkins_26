@@ -10,7 +10,7 @@ pipeline {
             }
 
             steps {
-                echo 'Running Build on Build Node'
+                echo 'Running Build on slave1 Node'
 
                 sh 'echo Building application...'
                 sh 'mkdir -p build'
@@ -24,7 +24,7 @@ pipeline {
             }
 
             steps {
-                echo 'Running Tests on Test Node'
+                echo 'Running Tests on slave2 Node'
 
                 sh 'echo Running tests...'
                 sh 'cat build/result.txt'
@@ -35,7 +35,7 @@ pipeline {
             agent any
 
             steps {
-                echo 'Running Deployment on Deploy Node'
+                echo 'Running Deployment on any Node'
 
                 sh 'echo Deploying application...'
                 sh 'echo Deployment completed'
