@@ -13,11 +13,10 @@ pipeline{
             description : 'Select your choice'
         )
 
-        booleanparam(
+        booleanparam (
             name : 'DEPLOY',
             defaultValue : 'false'
-            description : 'Do you want to deploy?'
-        )
+            description : 'Do you want to deploy? ')
 }
     stages{
         stage('DISPLAYING PARAMETERS'){
