@@ -3,7 +3,15 @@ pipeline{
     stages{
         stage('BUILD'){
             steps{
-                catchError(buildResult: 'Failure', stageResult: 'Failure')
+                catchError(
+                    buildResult: 'Failure',
+                     stageResult: 'Failure'
+                     )
+             {
+                    echo "Starting Build..."
+                    sh 'exit 1'
+                    echo "Build completed"
+                }
             }
         }
         stage('EXCEPTION_HADLING'){
@@ -12,9 +20,9 @@ pipeline{
                     try{
                         sh 'exit 1'
                     }
-                    catch(Exception e){
-                        echo " caught an exception : ${e.message} "
-                        currentBuild.result = 'SUCCESS'
+                    catch (Exception e){
+                        echo " caught an exception : ${e.message}"
+    
                     }
                     finally{
                         echo "Cleaning up ..."
