@@ -1,0 +1,42 @@
+pipeline{
+    agent any 
+    stages{
+        stage('CHECKOUT'){
+            steps{
+                git branch: static 'main',
+                url: 'https://github.com/rajalakshmishivakumar/jenkins_26.git'
+                }
+            }
+            stage('BUILD'){
+                steps{
+                    echo "Your have successfully checkedout to git"
+                }
+        }
+        stage('TESTCASES'){
+            parallel{
+                stage('TEST1'){
+                    steps{
+                        echo "Initiated the TEST"
+                    }
+                }
+                stage('TEST2'){
+                    steps{
+                        sh 'pwd'
+                        sh 'ls -lrt'
+                        sh 'sleep 5'
+                    }
+                }
+                stage{
+                    steps{
+                        echo "SUCCESSFULLY TESTED ALL THE CASES"
+                    }
+                }
+            }
+        }
+        stage("DEPLOY"){
+            steps{
+                echo 'Execution Completed'
+            }
+        }
+    }
+}
