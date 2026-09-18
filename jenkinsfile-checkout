@@ -5,6 +5,7 @@ pipeline{
             steps{
                 git branch:'main',
                 url: 'https://github.com/practical-tutorials/project-based-learning.git'
+                sh 'ls -lrt'
                 }
             }
             stage('BUILD'){
