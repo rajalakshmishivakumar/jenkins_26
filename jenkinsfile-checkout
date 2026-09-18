@@ -26,7 +26,7 @@ pipeline{
                         sh 'sleep 5'
                     }
                 }
-                stage{
+                stage(TEST3){
                     steps{
                         echo "SUCCESSFULLY TESTED ALL THE CASES"
                     }
