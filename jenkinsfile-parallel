@@ -1,0 +1,33 @@
+pipeline{
+    agent any 
+    stages{
+        stage('BUILD'){
+            steps{
+                echo " this is to show that stages can be executed parallely"
+                
+            }
+        }
+
+        stage('Building parallel stages') {
+            parallel{
+                stage('test1'){
+                    steps{
+                        sh 'pwd'
+                    }
+                }
+                stage('test2'){
+                    steps{
+                        sh 'ls -lrt'
+                    }
+                }
+                stage('test3'){
+                    steps{
+                        echo 'Successfully Tested'
+                    }
+                }
+
+            }
+        }
+    }
+    echo "Successfully built the example"
+}
