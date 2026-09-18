@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('CHECKOUT'){
             steps{
-                git branch: static 'main',
+                git branch:'main',
                 url: 'https://github.com/practical-tutorials/project-based-learning.git'
                 }
             }
